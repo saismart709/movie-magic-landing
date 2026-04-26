@@ -4,14 +4,7 @@ import { Hero } from "@/components/Hero";
 import { MovieCard, type Movie } from "@/components/MovieCard";
 import { Button } from "@/components/ui/button";
 import { Flame, Sparkles } from "lucide-react";
-import movie1 from "@/assets/movie-1.jpg";
-import movie2 from "@/assets/movie-2.jpg";
-import movie3 from "@/assets/movie-3.jpg";
-import movie4 from "@/assets/movie-4.jpg";
-import movie5 from "@/assets/movie-5.jpg";
-import movie6 from "@/assets/movie-6.jpg";
-import movie7 from "@/assets/movie-7.jpg";
-import movie8 from "@/assets/movie-8.jpg";
+import { movies } from "@/data/movies";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -31,17 +24,6 @@ export const Route = createFileRoute("/")({
   }),
   component: Index,
 });
-
-const movies: Movie[] = [
-  { id: 1, title: "Stellar Horizon", poster: movie1, rating: 9.2, votes: "84.5K", genres: ["Sci-Fi", "Adventure"], language: "English", format: "IMAX 3D" },
-  { id: 2, title: "Letters from Paris", poster: movie2, rating: 8.4, votes: "32.1K", genres: ["Romance", "Drama"], language: "French", format: "2D" },
-  { id: 3, title: "Neon Shadows", poster: movie3, rating: 8.9, votes: "67.3K", genres: ["Action", "Thriller"], language: "English", format: "4DX" },
-  { id: 4, title: "The Hollow House", poster: movie4, rating: 7.8, votes: "21.8K", genres: ["Horror", "Mystery"], language: "English", format: "2D" },
-  { id: 5, title: "Wonder Woods", poster: movie5, rating: 8.6, votes: "45.9K", genres: ["Animation", "Family"], language: "Hindi", format: "3D" },
-  { id: 6, title: "Endless Summer", poster: movie6, rating: 7.5, votes: "18.2K", genres: ["Comedy", "Drama"], language: "English", format: "2D" },
-  { id: 7, title: "Final Lap", poster: movie7, rating: 8.1, votes: "29.4K", genres: ["Sports", "Biography"], language: "Hindi", format: "IMAX" },
-  { id: 8, title: "Midnight Detective", poster: movie8, rating: 8.7, votes: "38.7K", genres: ["Mystery", "Noir"], language: "English", format: "2D" },
-];
 
 function MovieGrid({ items }: { items: Movie[] }) {
   return (

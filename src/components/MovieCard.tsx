@@ -1,5 +1,7 @@
 import { Star, Heart } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Link } from "@tanstack/react-router";
 
 export interface Movie {
   id: number;
@@ -36,6 +38,13 @@ export function MovieCard({ movie }: { movie: Movie }) {
           <span className="text-xs font-semibold">{movie.rating}</span>
           <span className="text-xs text-muted-foreground">({movie.votes})</span>
         </div>
+        <div className="absolute inset-x-2 bottom-2 flex justify-end opacity-0 transition-opacity group-hover:opacity-100">
+          <Button asChild size="sm" className="h-8 px-3 text-xs">
+            <Link to="/movies/$movieId" params={{ movieId: String(movie.id) }}>
+              Book Tickets
+            </Link>
+          </Button>
+        </div>
       </div>
       <div className="mt-3 space-y-1">
         <h3 className="font-semibold leading-tight line-clamp-1 group-hover:text-primary transition-colors">
@@ -52,6 +61,11 @@ export function MovieCard({ movie }: { movie: Movie }) {
             {movie.language}
           </Badge>
         </div>
+        <Button asChild size="sm" className="mt-2 w-full">
+          <Link to="/movies/$movieId" params={{ movieId: String(movie.id) }}>
+            Book Tickets
+          </Link>
+        </Button>
       </div>
     </article>
   );
