@@ -3,7 +3,7 @@ import { Header } from "@/components/Header";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Star, MapPin, Clock, Ticket, ArrowLeft } from "lucide-react";
-import { getMovieById, getTheatersForMovie } from "@/data/movies";
+import { getMovieById, getTheatersForMovie, type Theater, type Showtime } from "@/data/movies";
 
 export const Route = createFileRoute("/movies/$movieId")({
   loader: ({ params }) => {
@@ -84,7 +84,7 @@ function MovieDetailsPage() {
                 <Badge variant="outline">{movie.language}</Badge>
               </div>
               <div className="flex flex-wrap gap-2">
-                {movie.genres.map((g) => (
+                {movie.genres.map((g: string) => (
                   <Badge key={g} variant="outline">
                     {g}
                   </Badge>
@@ -104,7 +104,7 @@ function MovieDetailsPage() {
           </p>
 
           <div className="mt-8 space-y-5">
-            {theaters.map((theater) => (
+            {theaters.map((theater: Theater) => (
               <article
                 key={theater.id}
                 className="rounded-xl border border-border/60 bg-card p-5 shadow-[var(--shadow-card)] md:p-6"
@@ -126,7 +126,7 @@ function MovieDetailsPage() {
                   className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-4"
                   aria-label={`Showtimes at ${theater.name}`}
                 >
-                  {theater.showtimes.map((s) => {
+                  {theater.showtimes.map((s: Showtime) => {
                     const low = s.seatsLeft < 20;
                     return (
                       <li key={`${theater.id}-${s.time}`}>
