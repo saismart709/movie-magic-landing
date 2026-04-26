@@ -16,7 +16,7 @@ interface SeatsSearch {
   price: number;
 }
 
-export const Route = createFileRoute("/movies/$movieId/seats")({
+export const Route = createFileRoute("/movies/$movieId_/seats")({
   validateSearch: (search: Record<string, unknown>): SeatsSearch => ({
     tickets: Math.min(10, Math.max(1, Number(search.tickets) || 1)),
     theater: String(search.theater ?? ""),
