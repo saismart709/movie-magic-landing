@@ -151,7 +151,7 @@ function MovieDetailsPage() {
                     return (
                       <li key={`${theater.id}-${s.time}`}>
                         <Link
-                          to="/movies/$movieId_/seats"
+                          to="/movies/$movieId/seats"
                           params={{ movieId: String(movie.id) }}
                           search={{
                             tickets,
