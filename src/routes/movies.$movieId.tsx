@@ -2,8 +2,9 @@ import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { Header } from "@/components/Header";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Star, MapPin, Clock, Ticket, ArrowLeft } from "lucide-react";
+import { Star, MapPin, Clock, Ticket, ArrowLeft, Minus, Plus } from "lucide-react";
 import { getMovieById, getTheatersForMovie, type Theater, type Showtime } from "@/data/movies";
+import { useState } from "react";
 
 export const Route = createFileRoute("/movies/$movieId")({
   loader: ({ params }) => {
@@ -46,6 +47,9 @@ export const Route = createFileRoute("/movies/$movieId")({
 
 function MovieDetailsPage() {
   const { movie, theaters } = Route.useLoaderData();
+  const [tickets, setTickets] = useState(2);
+  const dec = () => setTickets((t) => Math.max(1, t - 1));
+  const inc = () => setTickets((t) => Math.min(10, t + 1));
 
   return (
     <div className="min-h-screen bg-background">
@@ -103,6 +107,22 @@ function MovieDetailsPage() {
             Pick a theater and showtime to continue with your booking.
           </p>
 
+          <div className="mt-6 flex flex-wrap items-center gap-4 rounded-xl border border-border/60 bg-card p-4 shadow-[var(--shadow-card)]">
+            <div>
+              <p className="text-xs uppercase tracking-wider text-muted-foreground">Tickets</p>
+              <p className="text-sm text-muted-foreground">How many seats do you need?</p>
+            </div>
+            <div className="ml-auto inline-flex items-center gap-3 rounded-lg border border-border/70 bg-background/40 p-1">
+              <Button variant="ghost" size="icon" className="h-8 w-8" onClick={dec} aria-label="Decrease tickets">
+                <Minus className="h-4 w-4" />
+              </Button>
+              <span className="min-w-[2ch] text-center text-lg font-semibold">{tickets}</span>
+              <Button variant="ghost" size="icon" className="h-8 w-8" onClick={inc} aria-label="Increase tickets">
+                <Plus className="h-4 w-4" />
+              </Button>
+            </div>
+          </div>
+
           <div className="mt-8 space-y-5">
             {theaters.map((theater: Theater) => (
               <article
@@ -130,9 +150,17 @@ function MovieDetailsPage() {
                     const low = s.seatsLeft < 20;
                     return (
                       <li key={`${theater.id}-${s.time}`}>
-                        <button
-                          type="button"
-                          className="group w-full rounded-lg border border-border/70 bg-background/40 p-3 text-left transition-colors hover:border-primary hover:bg-primary/5"
+                        <Link
+                          to="/movies/$movieId/seats"
+                          params={{ movieId: String(movie.id) }}
+                          search={{
+                            tickets,
+                            theater: theater.id,
+                            time: s.time,
+                            format: s.format,
+                            price: s.price,
+                          }}
+                          className="group block w-full rounded-lg border border-border/70 bg-background/40 p-3 text-left transition-colors hover:border-primary hover:bg-primary/5"
                         >
                           <div className="flex items-center justify-between">
                             <span className="inline-flex items-center gap-1.5 font-semibold">
@@ -152,7 +180,7 @@ function MovieDetailsPage() {
                           <span className="mt-3 inline-flex w-full items-center justify-center gap-1 rounded-md bg-primary/10 px-2 py-1.5 text-xs font-medium text-primary opacity-0 transition-opacity group-hover:opacity-100">
                             <Ticket className="h-3 w-3" /> Select
                           </span>
-                        </button>
+                        </Link>
                       </li>
                     );
                   })}
