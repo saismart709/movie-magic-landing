@@ -94,10 +94,17 @@ function SeatsPage() {
 
   const confirm = () => {
     if (!ready) return;
-    toast.success("Seats reserved!", {
-      description: `${selected.sort().join(", ")} at ${theater.name} · ${search.time}`,
+    navigate({
+      to: "/movies/$movieId/payment",
+      params: { movieId: String(movie.id) },
+      search: {
+        seats: selected.sort().join(","),
+        theater: theater.id,
+        time: search.time,
+        format: search.format,
+        price: search.price,
+      },
     });
-    setTimeout(() => navigate({ to: "/" }), 1200);
   };
 
   return (
