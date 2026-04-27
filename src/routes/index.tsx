@@ -59,12 +59,12 @@ function Index() {
       <main>
         <Hero movies={movies} />
 
-        <section className="container mx-auto px-4 py-12 md:px-6 md:py-16">
+        <section id="featured-movies" className="container mx-auto px-4 py-12 md:px-6 md:py-16 scroll-mt-20">
           <SectionHeader icon={Flame} title="Featured Movies" subtitle="Trending now" />
           <MovieGrid items={movies.slice(0, 5)} />
         </section>
 
-        <section className="container mx-auto px-4 pb-16 md:px-6 md:pb-24">
+        <section id="recommended-movies" className="container mx-auto px-4 pb-16 md:px-6 md:pb-24 scroll-mt-20">
           <SectionHeader icon={Sparkles} title="Recommended for You" subtitle="Just for you" />
           <MovieGrid items={movies.slice(3, 8)} />
         </section>
