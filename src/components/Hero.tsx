@@ -23,11 +23,28 @@ export function Hero({ movies }: { movies: Movie[] }) {
               is calling — grab the best seats before they're gone.
             </p>
             <div className="flex flex-wrap gap-3">
-              <Button size="lg" className="gap-2 shadow-[var(--shadow-glow)]">
+              <Button
+                size="lg"
+                className="gap-2 shadow-[var(--shadow-glow)]"
+                onClick={() =>
+                  document
+                    .getElementById("featured-movies")
+                    ?.scrollIntoView({ behavior: "smooth", block: "start" })
+                }
+              >
                 <Play className="h-4 w-4 fill-current" />
                 Browse Movies
               </Button>
-              <Button size="lg" variant="outline" className="gap-2">
+              <Button
+                size="lg"
+                variant="outline"
+                className="gap-2"
+                onClick={() =>
+                  document
+                    .getElementById("recommended-movies")
+                    ?.scrollIntoView({ behavior: "smooth", block: "start" })
+                }
+              >
                 <Calendar className="h-4 w-4" />
                 Coming Soon
               </Button>
