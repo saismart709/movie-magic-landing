@@ -7,7 +7,8 @@ import movie5 from "@/assets/movie-5.jpg";
 import movie6 from "@/assets/movie-6.jpg";
 import movie7 from "@/assets/movie-7.jpg";
 import movie8 from "@/assets/movie-8.jpg";
-
+import movie9 from "@/assets/movie-9.jpg";
+import movie10 from "@/assets/movie-10.jpg";
 export const movies: Movie[] = [
   { id: 1, title: "Stellar Horizon", poster: movie1, rating: 9.2, votes: "84.5K", genres: ["Sci-Fi", "Adventure"], language: "English", format: "IMAX 3D" },
   { id: 2, title: "Letters from Paris", poster: movie2, rating: 8.4, votes: "32.1K", genres: ["Romance", "Drama"], language: "French", format: "2D" },
@@ -17,6 +18,8 @@ export const movies: Movie[] = [
   { id: 6, title: "Endless Summer", poster: movie6, rating: 7.5, votes: "18.2K", genres: ["Comedy", "Drama"], language: "English", format: "2D" },
   { id: 7, title: "Final Lap", poster: movie7, rating: 8.1, votes: "29.4K", genres: ["Sports", "Biography"], language: "Hindi", format: "IMAX" },
   { id: 8, title: "Midnight Detective", poster: movie8, rating: 8.7, votes: "38.7K", genres: ["Mystery", "Noir"], language: "English", format: "2D" },
+  { id: 9, title: "toxic", poster: movie9, rating: 8.7, votes: "38.7K", genres: ["Mystery", "Noir"], language: "Telugu", format: "2D" },
+  { id: 10, title: "irumudi", poster: movie10, rating: 8.7, votes: "38.7K", genres: ["Mystery", "Noir"], language: "Telugu", format: "2D" },
 ];
 
 export interface Showtime {

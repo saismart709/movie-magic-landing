@@ -66,7 +66,7 @@ function Index() {
 
         <section id="recommended-movies" className="container mx-auto px-4 pb-16 md:px-6 md:pb-24 scroll-mt-20">
           <SectionHeader icon={Sparkles} title="Recommended for You" subtitle="Just for you" />
-          <MovieGrid items={movies.slice(3, 8)} />
+          <MovieGrid items={movies.slice(5, 10)} />
         </section>
 
         <footer className="border-t border-border/50 bg-secondary/40 py-8">
